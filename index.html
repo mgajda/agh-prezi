@@ -72,23 +72,25 @@ docker run -it                    \
 ---
 ## Typy z uniami
 ```haskell
-data Type = Array  [         Type ]
+data Type = Null -- lub Undefined
+          | Array            Type
           | Object [(String, Type)]
           | Union  [         Type ]
           | Int
           | String
-          | Null -- lub Undefined
 ```
 
 ```haskell
 (⊔) :: Type -> Type -> Type
 Int ⊔ String = Union [Int, String]
-Array a ⊔ Array b = Array (a ⊔ b)
+Array a ⊔ Array b = Array (      a ⊔  b)
+Union a ⊔ Union b = Union (uniq (a ++ b))
 ```
 <!-- .element: class="fragment" -->
 
 ```haskell
-Null = Union []
+instance Show Type where
+  show (Union Null:xs) = "Maybe " ++ show xs
 ```
 <!-- .element: class="fragment" -->
 ---
