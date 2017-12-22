@@ -32,8 +32,7 @@
                     <script type="text/template">
 ## JSON-Autotype i wykorzystanie Haskella w Data Science
 ### Michał J. Gajda
-- 19 grudnia 2017
-- MonadicWarsaw
+- 21 grudnia 2017
 ---
 ## Michał J. Gajda
   - mgr informatyki
@@ -89,8 +88,7 @@ Union a ⊔ Union b = Union (uniq (a ++ b))
 <!-- .element: class="fragment" -->
 
 ```haskell
-instance Show Type where
-  show (Union Null:xs) = "Maybe " ++ show xs
+show (Union Null:xs) = "Maybe " ++ show xs
 ```
 <!-- .element: class="fragment" -->
 ---
@@ -101,6 +99,13 @@ Object o ⊔ Object p = Object (bimap (⊔) o p)
 ```
 
 * Tutaj `bimap` to dwuargumentowy `map`, łączący `o` i `p` po nazwie klucza. (Wymaga elementu neutralnego.)
+---
+## Heurystyki
+```
+show Null = "Value" -- Any JSON value
+```
+* Unifikacja obiektów o więcej niż 90% tych samych nazw pól
+<!-- .element: class="fragment" -->
 ---
 ## Typy z uniami
 - Rozwiązanie dla danych _semiustrukturyzowanych_ i nieustrukturyzowanych
@@ -188,7 +193,7 @@ sumUp :: { reduce :: (a -> a -> a) -> a }
   - Są kanały Gittera
   - Plan implementacji DataFrame w Haskellu <!-- .element: class="fragment" -->
   - Plan stworzenia bazy danych obrazów Dockera i VM-ów <!-- .element: class="fragment" -->
-* Plan workshop-u na ICFP 2̶0̶1̶7̶2018.
+* Plan workshop-u na ICFP 2̶0̶1̶8̶2019.
 * Plan dzielenia kodu z Idrisem i PureScriptem.
                     </script>
                </section>
